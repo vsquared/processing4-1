@@ -183,13 +183,13 @@ public class GPIO {
 
 
   /**
-   *  Returns the value of an input pin, which is either GPIO.HIGH (1) 
-   *  or GPIO.LOW (0)<br/>
+   *  Returns the value of an input pin, which is either <b>GPIO.HIGH</b> 
+   *  (<b>1</b>) or <b>GPIO.LOW</b> (<b>0</b>)<br/>
    *  <br/>
    *  You need to set the pin to input by calling <a href="GPIO_pinMode_.html">
    *  pinMode()</a> before calling this function.
    *
-   *  @param pin GPIO pin
+   *  @param pin GPIO pin number
    *  @return GPIO.HIGH (1) or GPIO.LOW (0)
    *  @see pinMode
    *  @see digitalWrite
@@ -526,22 +526,6 @@ public class GPIO {
   }
 
 
-  /**
-   *  Waits for the value of an input pin to change<br/>
-   *  <br/>
-   *  The mode parameter determines when the function will return: <b>GPIO.FALLING</b> occurs 
-   *  when the level changes from high to low, <b>GPIO.RISING</b> when the level changes from 
-   *  low to high, and <b>GPIO.CHANGE</b> when either occurs.<br/>
-   *  <br/>
-   *  The optional timeout parameter determines how many milliseconds the function will 
-   *  wait at the most. If the value of the input pin hasn't changed at this point, an 
-   *  exception is raised for this line. Without a timeout parameter the function will 
-   *  wait indefinitely until the input pin has changed to the desired state.
-   *  @param pin GPIO pin
-   *  @param mode what to wait for: GPIO.CHANGE, GPIO.FALLING or GPIO.RISING
-   *  @webref GPIO
-   *  @webBrief Waits for the value of an input pin to change
-   */
   public static void waitFor(int pin, int mode) {
     waitFor(pin, mode, -1);
   }
@@ -559,7 +543,10 @@ public class GPIO {
    *  exception is raised for this line. Without a timeout parameter the function will 
    *  wait indefinitely until the input pin has changed to the desired state.
    *
-   *  This function will throw a RuntimeException in case of a timeout.
+   *  This function will throw a <b>RuntimeException</b> in case of a timeout.
+   *  @param pin GPIO pin number
+   *  @param mode the type of pin change to wait for: GPIO.CHANGE, GPIO.FALLING 
+   *  or GPIO.RISING
    *  @param timeout don't wait more than timeout milliseconds
    *  @webref GPIO
    *  @webBrief Waits for the value of an input pin to change
@@ -582,7 +569,7 @@ public class GPIO {
    *
    *  Make sure to setup the interrupt with enableInterrupt() before calling
    *  this function. A timeout value of -1 waits indefinitely.
-   *  @param pin GPIO pin
+   *  @param pin GPIO pin number
    *  @param timeout don't wait more than timeout milliseconds
    *  @return true if the interrupt occured, false if the timeout occured
    *  @see enableInterrupt
